@@ -10,6 +10,10 @@
         "sales_account_entity_menu": {
           "url": "index.html",
           "icon": "styles/images/icon.svg"
+        },
+        "contact_entity_menu": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
         }
       }
     },
