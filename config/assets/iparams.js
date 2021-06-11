@@ -1,41 +1,33 @@
-var runtimeProductName;
-var fsalesInstallationPage = function (utils) {
-  utils.set('ApiKey', { hint: 'Enter APIKey of your Freshsales Account' });
-  t;
-  utils.set('ApiKey', { label: 'APIKey_Freshsales' });
-  utils.set('FieldToDisplayInFCRM', { visible: false });
-};
-var fcrmInstallationPage = function (utils) {
-  utils.set('ApiKey', { hint: 'Enter APIKey of your FCRM Account' });
-  utils.set('ApiKey', { label: 'APIKey_FCRM' });
-  utils.set('FieldToDisplayInFSales', { visible: false });
-};
+async function onFormLoad() {
+  const client = await app.initialized();
+  let { name: currentProduct } = client.context.productContext;
+  renderConfigPage(currentProduct);
+}
 
-function onFormLoad() {
-  console.log('OnFormLoad() function fired 🧨');
-  app.initialized().then(
-    function getClientObj(client) {
-      runtimeProductName = client.context.productContext.name;
+function renderConfigPage(currentProduct) {
+  let product = String(currentProduct);
 
-      /**
-       * App trying to learn which product it's runtime is going to be on
-       * render relavant installation page.
-       */
+  switch (product) {
+    case 'freshsales':
+      console.log('freshsales');
+      utils.set('api_key', personalizeAPIField('Freshsales'));
+      utils.set('freshworks_crm_field', { visible: false });
+      break;
+    case 'freshworks_crm':
+      console.log('freshworks crm');
+      utils.set('api_key', personalizeAPIField('Freshworks CRM'));
+      utils.set('freshsales_field', { visible: false });
+      break;
+  }
 
-      if (runtimeProductName == 'freshsales') {
-        fsalesInstallationPage(utils);
-      } else if (runtimeProductName == 'freshworks_crm') {
-        fcrmInstallationPage(utils);
-      } else {
-        console.log('❗️:Missing Expected product from client');
-      }
-    },
-    function onFailProductIdentification(error) {
-      console.error('ERROR:Problem in fetching product from client');
-    }
-  );
+  function personalizeAPIField(name) {
+    return {
+      hint: `Please enter API key of ${name}`,
+      label: `${name} API key`
+    };
+  }
 }
 
 function onFormUnload() {
-  console.log('OnFormUnload function fired 🚒');
+  console.log('This statement executes when user leaves the configuration page');
 }

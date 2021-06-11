@@ -1,23 +1,24 @@
 {
-  "ApiKey": {
+  "api_key": {
     "display_name": "ApiKey",
-    "description": "Please enter your ApiKey",
+    "description": "Please enter your API Key",
     "type": "api_key",
     "required": true,
     "type_attributes": {
       "product": "current"
     },
-    "secure": true
+    "secure": true,
+    "events":[{"change":"APIKeyChange"}]
   },
-  "FieldToDisplayInFCRM": {
-    "display_name": "FieldToDisplayInFCRM",
-    "description": "Please enter your FieldToDisplayInFCRM",
+  "freshworks_crm_field": {
+    "display_name": "A field on Freshworks CRM",
+    "description": "An example description of field in Freshworks CRM",
     "type": "text",
     "required": true
   },
-  "FieldToDisplayInFSales": {
-    "display_name": "FieldToDisplayInFSales",
-    "description": "Please enter your FieldToDisplayInFSales",
+  "freshsales_field": {
+    "display_name": "A field on Freshsales",
+    "description": "An example description of field in Freshsales",
     "type": "text",
     "required": true
   }
