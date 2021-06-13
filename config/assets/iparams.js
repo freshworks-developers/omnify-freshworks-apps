@@ -1,5 +1,5 @@
 async function onFormLoad() {
-  const client = await app.initialized();
+  window.client = await app.initialized();
   let { name: currentProduct } = client.context.productContext;
   renderConfigPage(currentProduct);
 }
@@ -25,6 +25,34 @@ function renderConfigPage(currentProduct) {
       hint: `Please enter API key of ${name}`,
       label: `${name} API key`
     };
+  }
+}
+
+async function establishAPIConnection(api_key) {
+  try {
+    let { name: productName, url: host_url } = client.context.productContext;
+    console.log(productName, host_url, api_key);
+    let options = {
+      Authorization: `Token token=${api_key}`,
+      'Content-Type': 'application/json'
+    };
+    let URL = genHostEndpoint(productName, host_url);
+    console.log('url', URL);
+    client.request.get(URL, options).then(
+      function (data) {
+        console.log(`On Autheticating: ${data}`);
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  } catch (error) {
+    console.error(error);
+    return `4XX NOT OK`;
+  }
+
+  function genHostEndpoint(productName, host_url) {
+    return `${host_url}/sales/api/contacts/16001771741`;
   }
 }
 

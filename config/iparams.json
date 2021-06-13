@@ -8,7 +8,7 @@
       "product": "current"
     },
     "secure": true,
-    "events":[{"change":"APIKeyChange"}]
+    "events": [{ "change": "establishAPIConnection" }]
   },
   "freshworks_crm_field": {
     "display_name": "A field on Freshworks CRM",
