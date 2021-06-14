@@ -10,12 +10,16 @@ html {
 
 article {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 section {
-  padding: 1rem;
-  font-family: sans-serif;
+  width: 45%;
+  height: 35%;
+}
+
+h1 {
+  font-size: 20px;
 }
