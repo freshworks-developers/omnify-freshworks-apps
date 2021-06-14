@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <header class="product-specific title">Omni - Custom Installation Page: <span>
+  <header class="product-specific title">Omni - Custom Configuration Page: <span>
       Freshsales</span> 🌍</header>
   <section>
     <fieldset>
@@ -31,7 +31,7 @@
             <option value="">Please Select an option</option>
             <option value="opt1">Option 1</option>
             <option value="opt2">Option 2</option>
-            <option value="opt3">Option3</option>
+            <option value="opt3">Option 3</option>
           </select>
         </label>
       </div>
@@ -48,13 +48,13 @@
   </body>
 
 <script type="text/javascript" content-type="text/javascript" async>
-
+  let pick = document.getElementById.bind(document);
   let customPageFields = {
-    field1_datepickerHTML: document.getElementById('date-picker'),
-    field2_textinputHTML: document.getElementById('field2'),
-    dropdownHTML: document.getElementById('dropdown'),
-    domainHTML: document.getElementById('domain'),
-    api_keyHTML: document.getElementById('api_key')
+    field1_datepickerHTML: pick('date-picker'),
+    field2_textinputHTML: pick('field2'),
+    dropdownHTML: pick('dropdown'),
+    domainHTML: pick('domain'),
+    api_keyHTML: pick('api_key')
   };
 
   function getConfigs(configs) {

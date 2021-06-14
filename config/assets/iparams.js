@@ -1,26 +1,13 @@
-let client;
+(async function () {
+  const client = await app.initialized();
+  let { name: productName } = client.context.productContext;
+  renderConfigPage(productName);
+})();
 
-const titleHTML = document.querySelector('header.product-specific.title');
-const subTitleHTML = document.querySelector('legend.product-specific.subtitle');
+function renderConfigPage(productName) {
+  const titleHTML = document.querySelector('header.product-specific.title');
+  const subTitleHTML = document.querySelector('legend.product-specific.subtitle');
 
-function onDocumentReady() {
-  app
-    .initialized()
-    .then(function (_client) {
-      client = _client;
-      let productName = String(client.context.productContext.name) === 'freshsales' ? 'Freshsales' : 'Freshworks CRM';
-      productSpecificPage(productName);
-    })
-    .catch(function logError(err) {
-      console.error('Some error occurred -', err);
-    });
+  titleHTML.innerHTML = `Omni - Custom configuration page <span> ${productName}</span> 🌍`;
+  subTitleHTML.innerHTML = `${productName} Specific Elements Implementation`;
 }
-
-function productSpecificPage(productName) {
-  titleHTML.innerHTML = `Omni - Custom Installation Page: <span>
-  ${productName}</span > 🌍`;
-  subTitleHTML.innerHTML = `${productName} Specific Elements
-        Implementation`;
-}
-
-document.addEventListener('DOMContentLoaded', onDocumentReady);
