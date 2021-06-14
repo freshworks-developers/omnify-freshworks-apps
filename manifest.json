@@ -38,5 +38,5 @@
       }
     }
   },
-  "whitelisted-domains": ["https://*.freshsales.io", "https://*.freshworks.com"]
+  "whitelisted-domains": ["https://*.freshsales.io", "https://*.freshworks.com", "https://*.myfreshworks.com"]
 }
