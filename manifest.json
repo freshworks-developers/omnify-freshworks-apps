@@ -15,6 +15,17 @@
           "url": "index.html",
           "icon": "styles/images/icon.svg"
         }
+      },
+      "events": {
+        "onContactCreate": {
+          "handler": "onContactCreateHandler"
+        },
+        "onDealCreate": {
+          "handler": "onDealCreateHandler"
+        },
+        "onExternalEvent": {
+          "handler": "handleExtEventForCRM"
+        }
       }
     },
     "freshsales": {
@@ -34,6 +45,17 @@
         "sales_account_entity_menu": {
           "url": "index.html",
           "icon": "styles/images/icon.svg"
+        }
+      },
+      "events": {
+        "onLeadCreate": {
+          "handler": "onLeadCreateHandler"
+        },
+        "onDealCreate": {
+          "handler": "onDealCreateHandler"
+        },
+        "onExternalEvent": {
+          "handler": "handleExtEventForSales"
         }
       }
     }
