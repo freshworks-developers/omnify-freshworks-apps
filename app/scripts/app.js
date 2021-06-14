@@ -8,6 +8,11 @@
 
 function writeToDOM(data) {
   const renderUIwith = document.querySelector('#result');
+  const domainNameElement = `
+    <p>
+    ${JSON.stringify(data, null, 4)}
+    </p>
+  `;
   console.table(data);
-  renderUIwith.append(`${JSON.stringify(data, null, 4)}`);
+  renderUIwith.insertAdjacentHTML('afterbegin', domainNameElement);
 }
