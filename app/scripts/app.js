@@ -1,18 +1,32 @@
-(async function init() {
-  let client = await app.initialized();
-  client.events.on('app.activated', async function getData() {
-    let data = await client.data.get('domainName');
-    writeToDOM(data);
-  });
-})();
+var client;
 
-function writeToDOM(data) {
-  const renderUIwith = document.querySelector('#result');
-  const domainNameElement = `
-    <p>
-    ${JSON.stringify(data, null, 4)}
-    </p>
-  `;
-  console.table(data);
-  renderUIwith.insertAdjacentHTML('afterbegin', domainNameElement);
+document.onreadystatechange = function () {
+  if (document.readyState === 'interactive') renderApp();
+  function renderApp() {
+    var onInit = app.initialized();
+
+    onInit.then(getClient).catch(handleErr);
+
+    function getClient(_client) {
+      client = _client;
+      client.events.on('app.activated', onAppActivate);
+    }
+  }
+};
+
+function onAppActivate() {
+  var btn = document.querySelector('.btn-open');
+  btn.addEventListener('click', openModal);
+  // Start writing your code...
+}
+
+function openModal() {
+  client.interface.trigger('showModal', useTemplate('Title of the Modal', './views/modal.html'));
+}
+
+function useTemplate(title, template) {
+  return {
+    title,
+    template
+  };
 }
