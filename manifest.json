@@ -10,6 +10,21 @@
         "sales_account_entity_menu": {
           "url": "index.html",
           "icon": "styles/images/icon.svg"
+        },
+        "contact_entity_menu": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
+      "events": {
+        "onContactCreate": {
+          "handler": "onContactCreateHandler"
+        },
+        "onDealCreate": {
+          "handler": "onDealCreateHandler"
+        },
+        "onExternalEvent": {
+          "handler": "handleExtEventForCRM"
         }
       }
     },
@@ -31,7 +46,19 @@
           "url": "index.html",
           "icon": "styles/images/icon.svg"
         }
+      },
+      "events": {
+        "onLeadCreate": {
+          "handler": "onLeadCreateHandler"
+        },
+        "onDealCreate": {
+          "handler": "onDealCreateHandler"
+        },
+        "onExternalEvent": {
+          "handler": "handleExtEventForSales"
+        }
       }
     }
-  }
+  },
+  "whitelisted-domains": ["https://*.freshsales.io", "https://*.freshworks.com", "https://*.myfreshworks.com"]
 }
